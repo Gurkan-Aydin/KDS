@@ -1,0 +1,19 @@
+{
+  "name": "kds",
+  "version": "1.0.0",
+  "description": "karar destek sis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gurkan-Aydin/KDS.git"
+  },
+  "author": "Gürkan Aydın",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gurkan-Aydin/KDS/issues"
+  },
+  "homepage": "https://github.com/Gurkan-Aydin/KDS#readme"
+}
