@@ -10,13 +10,22 @@
     "type": "git",
     "url": "git+https://github.com/Gurkan-Aydin/KDS.git"
   },
+  "keywords": [
+    "kds"
+  ],
   "author": "Gürkan Aydın",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Gurkan-Aydin/KDS/issues"
   },
   "homepage": "https://github.com/Gurkan-Aydin/KDS#readme",
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.3"
+  },
   "dependencies": {
-    "react-draggable": "^4.2.0"
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "pg": "^8.0.2"
   }
 }
