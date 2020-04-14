@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Gurkan-Aydin/KDS/issues"
   },
-  "homepage": "https://github.com/Gurkan-Aydin/KDS#readme"
+  "homepage": "https://github.com/Gurkan-Aydin/KDS#readme",
+  "dependencies": {
+    "react-draggable": "^4.2.0"
+  }
 }
