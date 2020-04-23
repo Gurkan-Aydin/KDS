@@ -1,8 +1,8 @@
 const db = require('../database');
 
 class Admin {
-    static retrieveAll (callback) {
-        db.query('SELECT name from Admin', (err, res) => {
+    static  retrieveAll (callback) {
+        db.query('SELECT name from "KdsSchema"."Admin"', (err, res) => {
           if (err.error)
             return callback(err);
           callback(res);
@@ -10,7 +10,7 @@ class Admin {
       }
     
       static insert (admin, callback) {
-        db.query('INSERT INTO Admin (name) VALUES ($1)', [admin], (err, res) => {
+        db.query('INSERT INTO "KdsSchema"."Admin" (name) VALUES ($1)', [admin], (err, res) => {
           if (err.error)
             return callback(err);
           callback(res);
@@ -18,3 +18,5 @@ class Admin {
       }
 
 }
+
+module.exports = Admin;
