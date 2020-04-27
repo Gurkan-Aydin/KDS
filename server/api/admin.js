@@ -4,7 +4,6 @@ var Admin = require('../models/admin.js');
 var router = express.Router();
 
 router.get('/', (req, res) => {
-  console.log("hello");
   Admin.retrieveAll((err, admin) => {
     if (err)
       return res.json(err);
