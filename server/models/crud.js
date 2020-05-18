@@ -8,6 +8,13 @@ class CRUD {
           callback(res);
         });
     }
+    static getByUsername (username, table, callback) {
+      db.query(`SELECT * FROM "KdsSchema"."${table}" WHERE username IN ('${username}')`, (err, res) => {
+        if (err.error)
+            return callback(err);
+        callback(res);
+      });
+    }
 
     static  retrieve (column, table, condition, callback) {
         db.query(`SELECT ${column} from "KdsSchema"."${table}" WHERE ${condition}`, (err, res) => {
@@ -26,7 +33,7 @@ class CRUD {
     }
 
     static delete (id, table, callback) {
-        db.query(`DELETE FROM ${table} WHERE ${id}=${table}.id`, (err, res) => {
+        db.query(`DELETE FROM "KdsSchema"."${table}" WHERE ${id}=${table}.id`, (err, res) => {
           if (err.error)
               return callback(err);
           callback(res);
@@ -34,7 +41,7 @@ class CRUD {
       }
 
       static update (id, table, set, callback) {
-        db.query(`UPDATE ${table} SET ${set} WHERE ${id}=${table}.id`, (err, res) => {
+        db.query(`UPDATE "KdsSchema"."${table}" SET ${set} WHERE ${id}=${table}.id`, (err, res) => {
           if (err.error)
               return callback(err);
           callback(res);
