@@ -5,7 +5,7 @@ var crud = require('../models/crud.js');
 
 router.get('/getByUsername/:username', (req, res) => {
   var username = req.params.username;
-  crud.getByUsername(username, "Admin", (err, result) => {
+  crud.getByUsername(username, "Statu", (err, result) => {
     if (err)
       return res.json(err);
     return res.json(result);
@@ -14,11 +14,12 @@ router.get('/getByUsername/:username', (req, res) => {
 
 
 router.post('/add', (req, res) => {
-  var admin = req.body.admin;
-  let column = " name, lastname, password, email"
-  let value = `${admin.name}, ${admin.lastname}, ${admin.password}, ${admin.email}`
+  var statu = req.body.statu;
+  let column = " name, comment, criterion_id_list, criterion_weight_list"
+  let value = `${statu.name}, ${statu.comment}, ${statu.criterion_id_list}, 
+                ${statu.criterion_weight_list}`
 
-  crud.insert(column, value, "Admin", (err, result) => {
+  crud.insert(column, value, "Statu", (err, result) => {
     if (err)
       return res.json(err);
     return res.json(result);
@@ -27,7 +28,7 @@ router.post('/add', (req, res) => {
 
 router.delete('/delete/:id', (req, res) => {
   var id = req.params.id;
-    crud.delete(id, "Admin", (err, result) => {
+    crud.delete(id, "Statu", (err, result) => {
         if (err)
           return res.json(err);
         return res.json(result);
@@ -35,9 +36,12 @@ router.delete('/delete/:id', (req, res) => {
 });
 
 router.post('/update', (req, res) => {
-    var admin = req.body.admin;
-    let set = `name = ${admin.name}, lastname = ${admin.lastname}, email = ${admin.email}, password = ${admin.password}`
-    crud.update(admin.id, "Admin", set, (err, result) => {
+    var statu = req.body.statu;
+    let set = `name = ${statu.name}, comment = ${statu.comment}, 
+    criterion_id_list = ${statu.criterion_id_list},
+    criterion_weight_list = ${statu.criterion_weight_list}`
+    
+    crud.update(statu.id, "Statu", set, (err, result) => {
       if (err)
         return res.json(err);
       return res.json(result);
