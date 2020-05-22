@@ -1,0 +1,24 @@
+input{
+   position: relative;
+   margin: 1%;
+   padding: 10px;
+   left: 10%;
+   width: 37%
+}
+
+.center {
+   position: relative;
+   left: 30%;
+   width: 40%;
+   margin: 1%;
+   padding: 10px;
+}
+
+
+.formCenter { 
+   position: relative;
+   left: 10%;
+   width: 80%;
+   margin: 1%;
+   padding: 10px;
+}

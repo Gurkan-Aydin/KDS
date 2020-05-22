@@ -5,6 +5,7 @@ var crud = require('../models/crud.js');
 
 router.get('/getByUsername/:username', (req, res) => {
   var username = req.params.username;
+  
   crud.getByUsername(username, "Admin", (err, result) => {
     if (err)
       return res.json(err);
