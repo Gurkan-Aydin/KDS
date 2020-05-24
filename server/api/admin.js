@@ -16,10 +16,9 @@ router.get('/getByUsername/:username', (req, res) => {
 
 router.post('/add', (req, res) => {
   var admin = req.body.admin;
-  let column = " name, lastname, password, email"
-  let value = `${admin.name}, ${admin.lastname}, ${admin.password}, ${admin.email}`
-
-  crud.insert(column, value, "Admin", (err, result) => {
+  let column = " name, lastname, password , username, question, answer"
+  let value = `'${admin.name}', '${admin.lastname}', '${admin.password}', '${admin.username}', '${admin.question}', '${admin.answer}'`
+    crud.insert(column, value, "Admin", (err, result) => {
     if (err)
       return res.json(err);
     return res.json(result);
@@ -36,9 +35,9 @@ router.delete('/delete/:id', (req, res) => {
 });
 
 router.post('/update', (req, res) => {
-    var admin = req.body.admin;
-    let set = `name = ${admin.name}, lastname = ${admin.lastname}, email = ${admin.email}, password = ${admin.password}`
-    crud.update(admin.id, "Admin", set, (err, result) => {
+    var value = req.body.value;
+    let set = `${req.body.type} = '${value}'`
+    crud.update(req.body.username, "Admin", set, (err, result) => {
       if (err)
         return res.json(err);
       return res.json(result);

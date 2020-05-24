@@ -26,9 +26,10 @@ class CRUD {
     
     static insert (column, value, table, callback) {
       db.query(`INSERT INTO "KdsSchema"."${table}" (${column}) VALUES (${value})`, (err, res) => {
+        console.log(`INSERT INTO "KdsSchema"."${table}" (${column}) VALUES (${value})`)
         if (err.error)
             return callback(err);
-        callback(res);
+        callback(true);
       });
     }
 
@@ -40,8 +41,8 @@ class CRUD {
         });
       }
 
-      static update (id, table, set, callback) {
-        db.query(`UPDATE "KdsSchema"."${table}" SET ${set} WHERE ${id}=${table}.id`, (err, res) => {
+      static update (username, table, set, callback) {
+        db.query(`UPDATE "KdsSchema"."${table}" SET ${set} WHERE username='${username}'`, (err, res) => {
           if (err.error)
               return callback(err);
           callback(res);

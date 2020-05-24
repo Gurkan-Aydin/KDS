@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 
 
 export class index extends Component {
-    
+
 
     render() {
         return (
-            <div>
-                
-            </div>
+                <div className="center60">
+                    hello
+                </div>   
         )
     }
 }
