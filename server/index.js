@@ -15,6 +15,9 @@ app.use(bodyParser.json());
 
 
 app.use('/api/admin', require('./api/admin'))
+app.use('/api/employee', require('./api/employee'))
+app.use('/api/statu', require('./api/statu'))
+app.use('/api/criterion', require('./api/criterion'))
 
 
 

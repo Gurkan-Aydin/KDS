@@ -28,6 +28,7 @@ export class loginForm extends Component {
 
     };
 
+  
     renderRedirect = () => {
         if (this.state.redirect) {
             return <Redirect to='/index' />
@@ -35,6 +36,8 @@ export class loginForm extends Component {
     }
 
     loginValid = async () => {
+        
+
         let input = { username: this.state.username, password: this.state.password }
         const response = await fetch(`/api/admin/getByUsername/${input.username}`)
         const admins = await response.json();
@@ -49,7 +52,7 @@ export class loginForm extends Component {
                     this.setState({ message: "wrong password", redirect: false });
                 } else {
                     this.setState({ message: "", redirect: true });
-                    localStorage.setItem('current', JSON.stringify({ loggedAdmin: admin, isValid: true }));
+                    localStorage.setItem('currentAdmin', JSON.stringify({ loggedAdmin: admin, isValid: true }));
                 }
             }
         }

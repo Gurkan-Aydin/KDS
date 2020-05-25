@@ -16,8 +16,8 @@ class CRUD {
       });
     }
 
-    static  retrieve (column, table, condition, callback) {
-        db.query(`SELECT ${column} from "KdsSchema"."${table}" WHERE ${condition}`, (err, res) => {
+    static  retrieve (table, condition, callback) {
+        db.query(`SELECT * from "KdsSchema"."${table}" WHERE ${condition}`, (err, res) => {
           if (err.error)
             return callback(err);
           callback(res);

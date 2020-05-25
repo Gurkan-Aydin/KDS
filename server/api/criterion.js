@@ -8,6 +8,16 @@ router.get('/getAll', (req, res) => {
 });
 
 
+router.get('/getByAdminId/:id' , (req, res) => {
+  let condition = `admin_id IN ('${req.params.id}' , null)`
+  crud.retrieve("Criterion", condition, (err, result) => {
+    if (err)
+    return res.json(err);
+  return res.json(result);
+  });
+});
+
+
 router.post('/add', (req, res) => {
     let column = "name, comment"
     let value = `${criterion.name}, ${criterion.comment}`

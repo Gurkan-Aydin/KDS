@@ -3,12 +3,13 @@ var crud = require('../models/crud.js');
 
 
 
-router.get('/getByUsername/:username', (req, res) => {
-  var username = req.params.username;
-  crud.getByUsername(username, "Statu", (err, result) => {
+
+router.get('/getByAdminId/:id' , (req, res) => {
+  let condition = `admin_id IN ('${req.params.id}')`
+  crud.retrieve("Statu", condition, (err, result) => {
     if (err)
-      return res.json(err);
-    return res.json(result);
+    return res.json(err);
+  return res.json(result);
   });
 });
 
