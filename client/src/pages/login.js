@@ -15,6 +15,7 @@ export class login extends Component {
                 <div>
                     
                     <Logo /> 
+                    <div className="user" >
                     <Switch>
                         <Route path="/login" component={Login} />
                         <Route path="/signup" component={Signup} />
@@ -22,7 +23,7 @@ export class login extends Component {
                         <Route path="/index" component={Index} />
                         <Route component={Login} />
                     </Switch>   
-                    
+                    </div>
                     
                 </div>
             </Router>

@@ -35,6 +35,22 @@ export class loginForm extends Component {
         }
     }
 
+    getData = async (adminId) => {
+        const responseE = await fetch(`/api/employee/getByAdminId/${adminId}`);
+        const dataE = await responseE.json();
+        localStorage.setItem('employee', JSON.stringify(dataE))
+
+        const responseS = await fetch(`/api/statu/getByAdminId/${adminId}`);
+        const dataS = await responseS.json();
+         localStorage.setItem('statu', JSON.stringify(dataS))
+
+        const responseC = await fetch(`/api/criterion/getByAdminId/${adminId}`);
+        const dataC = await responseC.json();
+        localStorage.setItem('criterion', JSON.stringify(dataC))
+        
+        return true;
+    }
+
     loginValid = async () => {
         
 
@@ -48,11 +64,13 @@ export class loginForm extends Component {
                 let inputPassword = input.password;
                 let password = admin.password;
 
-                if (password !== inputPassword) {
+                 if (password !== inputPassword) {
                     this.setState({ message: "wrong password", redirect: false });
                 } else {
-                    this.setState({ message: "", redirect: true });
                     localStorage.setItem('currentAdmin', JSON.stringify({ loggedAdmin: admin, isValid: true }));
+
+                    let a = await this.getData(JSON.parse(localStorage.getItem('currentAdmin')).loggedAdmin.id);
+                    if(a === true) this.setState({ message: "", redirect: true });
                 }
             }
         }
@@ -62,30 +80,32 @@ export class loginForm extends Component {
         const { username, password, message } = this.state
         return (
 
-            <div className="center" >
+                <div style={{maxWidth: "40%", marginLeft: "30%", marginTop: "20px"}}>
                 <hr />
-                <input id="username"
-                    className="formCenter"
+                     <input id="username"
+                    className="formCenter form-control form-control-user"
                     type="text"
                     placeholder="Username"
                     value={username}
                     onChange={this.changeInput} />
-                <br />
+
+               
+               
                 <input id="password"
-                    className="formCenter"
+                    className="formCenter form-control form-control-user"
                     type="password"
                     placeholder="Password"
                     value={password}
                     onChange={this.changeInput} />
-                <button id="loginButton" className="formCenter" onClick={this.loginValid}> Login </button>
+                
+                <button id="loginButton" className="btn btn-primary btn-user btn-block" onClick={this.loginValid}> Login </button>
                 <h6 className="formCenter" id="message" onChange={this.changeInput} >{message}</h6>
                 <hr />
-                <br />
                 <Link className="formCenter" to="/signup" > Sign Up </Link>
                 <br />
                 <Link className="formCenter" to="/forgatpass" > Forgat Password </Link>
                 {this.renderRedirect()}
-            </div>
+                </div>
 
         );
     }

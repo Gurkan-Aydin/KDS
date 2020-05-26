@@ -18,9 +18,9 @@ input{
 
 .formCenter { 
    position: relative;
-   width: 90%;
-   margin-top: 1%;
-   margin-bottom: 1%;
+   width: 100%;
+   margin-top: 2%;
+   margin-bottom: 2%;
    padding: 10px;
 }
 
@@ -49,4 +49,64 @@ input{
  h4{
     text-align: center;
     color: #000;
+ }
+
+ .search[type=text] {
+   width: 70%;
+   left: 20%;
+   -webkit-transition: width 0.4s ease-in-out;
+   transition: width 0.4s ease-in-out;
+   -webkit-transition: left 0.4s ease-in-out;
+   transition: left 0.4s ease-in-out;
+
+ }
+ 
+ /* When the input field gets focus, change its width to 100% */
+ .search[type=text]:focus {
+   width: 100%;
+   left: 0%;
+ }
+
+ .search{
+   background-image: url('../images/search.svg');
+   background-size: 20px;
+   float: left;
+   background-position: 10px 12px; /* Position the search icon */
+   background-repeat: no-repeat;
+   width: 100%; /* Full-width */
+   font-size: 16px; /* Increase font-size */
+   padding: 12px 20px 12px 40px; /* Add some padding */
+   border: 1px solid #ddd; /* Add a grey border */
+   margin-bottom: 12px; /* Add some space below the input */
+ }
+
+ li {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    color: rgb(255, 255, 255);
+    white-space: nowrap;
+    background-color: #2145bf ;
+ }
+
+ li:hover {
+    background-color: rgb(97, 127, 226);
+ }
+
+
+ ul {
+   list-style-type: none;
+   padding: 0;
+   width: 100%;
+ }
+
+
+ Link{
+      color: white
+ }
+
+ .searchImg{
+    max-width: 30px;
+    margin:5;
+    float: left;
  }

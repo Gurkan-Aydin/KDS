@@ -63,20 +63,19 @@ export class forgatPassForm extends Component {
         const { username, question, answer, message, isVisible, isNewpass } = this.state
 
         return (
-            <div className="center">
+            <div style={{maxWidth: "40%", marginLeft: "30%", marginTop: "20px"}}>
                 <hr />
                 {
                     !isNewpass ? <div>
                         {
                         !isVisible ? <div>
-                            <input className="formCenter" type="text" id="username" placeholder="Username" value={username} onChange={this.changeInput} />
-                            <button className="formCenter" id="next" onClick={this.findQuestion}> Next </button>
-                            <br />
+                            <input className="formCenter form-control form-control-user" type="text" id="username" placeholder="Username" value={username} onChange={this.changeInput} />
+                            <button className="btn btn-primary btn-user btn-block" id="next" onClick={this.findQuestion}> Next </button>
                         </div> : <div>
 
                             <h4 className="formCenter" id="question" >{question}</h4>
-                            <input className="formCenter" type="text" id="answer" placeholder="Answer" value={answer} onChange={this.changeInput} />
-                            <button className="formCenter" id="next2" onClick={this.checkQuestion}> Next </button>
+                            <input className="formCenter form-control form-control-user" type="text" id="answer" placeholder="Answer" value={answer} onChange={this.changeInput} />
+                            <button className="btn btn-primary btn-user btn-block" id="next2" onClick={this.checkQuestion}> Next </button>
                         </div>
                     }
                     </div> : <NewPassword username={username} />

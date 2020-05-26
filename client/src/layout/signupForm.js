@@ -35,26 +35,21 @@ export class signupForm extends Component {
         const { name, lastname, username, password, question, answer } = this.state;
         
         return (
-            <div className="center">
+            <div style={{maxWidth: "40%", marginLeft: "30%", marginTop: "20px"}}>
             <hr/>
             
-            <input className="formCenter" type="text" id="name" placeholder="name" value={name} onChange={this.changeInput}/> 
+            <input className="formCenter form-control form-control-user" type="text" id="name" placeholder="name" value={name} onChange={this.changeInput}/> 
             
-            <input className="formCenter" type="text" id="lastname" placeholder="Lastname" value={lastname} onChange={this.changeInput}/>
-            <br/>
-            <input className="formCenter" type="text" id="username" placeholder="Username" value={username} onChange={this.changeInput}/>
-            <br/>
-            <input className="formCenter" type="password" id="password" placeholder="Password" value={password} onChange={this.changeInput}/>
-            <br/>
-            <input className="formCenter" type="text" id="question" placeholder="Question" value={question} onChange={this.changeInput}/>
-            <br/>
-            <input className="formCenter" type="text" id="answer" placeholder="Answer" value={answer} onChange={this.changeInput}/>
+            <input className="formCenter form-control form-control-user" type="text" id="lastname" placeholder="Lastname" value={lastname} onChange={this.changeInput}/>
+            <input className="formCenter form-control form-control-user" type="text" id="username" placeholder="Username" value={username} onChange={this.changeInput}/>
+            <input className="formCenter form-control form-control-user" type="password" id="password" placeholder="Password" value={password} onChange={this.changeInput}/>
+            <input className="formCenter form-control form-control-user" type="text" id="question" placeholder="Question" value={question} onChange={this.changeInput}/>
+            <input className="formCenter form-control form-control-user" type="text" id="answer" placeholder="Answer" value={answer} onChange={this.changeInput}/>
+            <button className ="btn btn-primary btn-user btn-block"  id="signupButton" onClick={this.addAdmin}> Sign Up </button>
             <hr/>
-            <button className ="formCenter"  id="signupButton" onClick={this.addAdmin}> Sign Up </button>
+                <Link className="" to ="/login"> Login </Link>
             <br/>
-            <Link className="formCenter" to ="/login"> Login </Link>
-            <br/>
-            <Link className="formCenter" to ="/forgatpass"> Forgat Password </Link>
+            <Link className="" to ="/forgatpass"> Forgat Password </Link>
         </div>
         )
     }

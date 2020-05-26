@@ -5,9 +5,9 @@ import {Link} from 'react-router-dom'
  
 export default function centerIcon() {
     return (
+                
         <div>
-             <Link to={"/"} > <img src={logo} className="center" alt="logo" /> </Link>
-            
+             <Link to={"/index"} > <img src={logo} className="center" alt="logo" /> </Link>
         </div>
     )
 }
