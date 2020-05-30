@@ -49,6 +49,8 @@ input{
  h4{
     text-align: center;
     color: #000;
+    overflow: hidden; 
+    font-size: 100%;   
  }
 
  .search[type=text] {
@@ -80,7 +82,7 @@ input{
    margin-bottom: 12px; /* Add some space below the input */
  }
 
- li {
+ .searchUl  {
     position: relative;
     width: 100%;
     padding: 10px;
@@ -94,7 +96,7 @@ input{
  }
 
 
- ul {
+ .searchUl {
    list-style-type: none;
    padding: 0;
    width: 100%;
@@ -110,3 +112,19 @@ input{
     margin:5;
     float: left;
  }
+
+
+
+ .translation{
+    -webkit-transition: left 0.4s ease-in-out;
+    transition: left 0.4s ease-in-out;
+
+   
+ }
+
+ a{
+    text-align: center; 
+    font-size: 18px;
+ }
+
+ 

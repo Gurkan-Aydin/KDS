@@ -41,7 +41,7 @@ export default class newPassword extends Component {
     render() {
         const { message, password, rePassword } = this.state
         return (
-            <div style={{maxWidth: "40%", marginLeft: "30%", marginTop: "20px"}}>
+            <div>
                 <input className="formCenter form-control form-control-user" type="text" id="password" placeholder="New Password" value={password} onChange={this.changeInput} />
                 <input className="formCenter form-control form-control-user" type="text" id="rePassword" placeholder="Re- New Password" value={rePassword} onChange={this.changeInput} />
                 <button className="btn btn-primary btn-user btn-block" id="changePass" onClick={this.updatePassword}> Change Password </button>

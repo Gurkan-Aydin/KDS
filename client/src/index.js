@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { StyleProvider } from './contexts/styleContext'
 
 
 ReactDOM.render(
   <React.StrictMode>
+    
+    <StyleProvider>
       <App />
-    
-    
+    </StyleProvider>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

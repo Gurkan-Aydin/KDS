@@ -4,6 +4,8 @@ import employeeImg from '../images/employee.svg'
 import statuImg from '../images/statu.svg'
 import criteriaImg from '../images/criteria.png'
 import userImg from '../images/users.png'
+import { StyleConsumer } from "../contexts/styleContext";
+
 
 export class MainNav extends Component {
 
@@ -20,18 +22,21 @@ export class MainNav extends Component {
         statuResponse: "",
         criterionResponse: "",
 
-        employeeColor:"",
-        statuColor:"",
-        criterionColor:"",
+        employeeColor: "",
+        statuColor: "",
+        criterionColor: "",
+
+
+
     }
 
     search = (e) => {
         let list, input;
-        if(e.target.value==="") {
-            list =[];
+        if (e.target.value === "") {
+            list = [];
             this.setState({
-                [`${e.target.id}Color`]:"",
-                [`${e.target.id}Response`]:""
+                [`${e.target.id}Color`]: "",
+                [`${e.target.id}Response`]: ""
             })
             return;
         }
@@ -39,18 +44,17 @@ export class MainNav extends Component {
             case "employee":
                 list = this.state.employees;
                 input = this.state.employee;
-               
+
                 if (list.length !== 0) {
-                    console.log(this.state.employees)
                     this.setState({
+
                         [`${e.target.id}Color`]: "bg-white s py-2 collapse-inner rounded",
                         [`${e.target.id}Response`]: list.filter(person => person.name.includes(input)).map(filteredPerson => (
-                            <Link to={`api/${e.target.id}/${filteredPerson.id}`} key={filteredPerson.id} style={{textColor:"red"}} className="collapse-item"> 
-                                <li  key={filteredPerson.id} style={{textColor:"red"}} >   
-                                  <img className="searchImg " src={(filteredPerson.image === null) ? userImg : filteredPerson.image}/>  {filteredPerson.name} {filteredPerson.lastname} 
-                                </li>
-                            </Link>     
-                         
+                            <Link className="dropdown-item" to={`api/${e.target.id}/${filteredPerson.id}`} key={filteredPerson.id}>
+                                <img alt="logo" className="searchImg " src={(filteredPerson.image === null) ? userImg : filteredPerson.image} />
+                                {filteredPerson.name} {filteredPerson.lastname}
+                            </Link>
+
                         ))
                     })
                 }
@@ -69,15 +73,17 @@ export class MainNav extends Component {
         }
 
         if (list.length !== 0) {
+
             this.setState({
+
                 [`${e.target.id}Color`]: "bg-white s py-2 collapse-inner rounded",
                 [`${e.target.id}Response`]: list.filter(person => person.name.includes(input)).map(filteredPerson => (
-                    <Link to={`api/${e.target.id}/${filteredPerson.id}`} key={filteredPerson.id} style={{textColor:"red"}}> 
-                        <li  key={filteredPerson.id} style={{textColor:"red"}} >   
-                           {filteredPerson.name} 
+                    <Link to={`api/${e.target.id}/${filteredPerson.id}`} key={filteredPerson.id} style={{ textColor: "red" }} >
+                        <li key={filteredPerson.id} className="searchli" style={{ textColor: "red" }} >
+                            {filteredPerson.name}
                         </li>
-                    </Link>     
-                 
+                    </Link>
+
                 ))
             })
         }
@@ -90,51 +96,63 @@ export class MainNav extends Component {
     };
 
     render() {
-        const { employee, statu, criterion, employeeColor, criterionColor, statuColor} = this.state
+        const { employee, statu, criterion, employeeColor, criterionColor, statuColor } = this.state
         return (
-            <div  style={{maxWidth: "70%", marginLeft: "15%", marginTop: "20px"}}>
+            <StyleConsumer>
+                {
+                    ({ dispatch }) => {
+                        return (
+                            <div style={{ maxWidth: "70%", marginLeft: "15%", marginTop: "20px" }}>
 
-                <div className="col3">
-                    <Link to="/employee">
-                        <img src={employeeImg} alt="employee" />
-                        <h4><i>EMPLOYEES</i></h4>
-                    </Link>
-                    <input id="employee" type="text" className="search formCenter form-control " placeholder="Search.." value={employee} onChange={this.changeInput} onKeyUp={this.search} />
-                    <br/>
-                    <div className={employeeColor}  >
-                        <ul >{this.state.employeeResponse}</ul>
-                    </div>
-                        
-                    
-                   
-                </div>
-                <div className="col3">
-                    <Link to="/statu">
-                        <img src={statuImg} alt="statu" />
-                        <h4><i>STATU</i></h4>
-                    </Link>
-                    <input id="statu" type="text" className="search formCenter form-control " placeholder="Search.." value={statu} onChange={this.changeInput} onKeyUp={this.search} />
-                    <br/>
-                    <div className={statuColor}>
-                         <ul >{this.state.statuResponse}</ul>
-                    </div>
-                   
-                </div>
-                <div className="col3">
-                    <Link to="/criteria">
-                        <img src={criteriaImg} alt="criteria" />
-                        <h4><i>CRITERIA</i></h4>
-                    </Link>
-                    <input id="criterion" type="text" className="search formCenter form-control " placeholder="Search.." value={criterion} onChange={this.changeInput} onKeyUp={this.search} />
-                    <br/>
-                    <div className={criterionColor}>
-                         <ul>{this.state.criterionResponse}</ul>
-                    </div>
-                   
-                </div>
+                                <div className="col3" id="userDropdown" >
+                                    <Link to="/employee"  >
+                                        <img src={employeeImg} alt="employee" />
+                                        <h4><i>EMPLOYEES</i></h4>
+                                    </Link>
+                                    <input id="employee" type="text" className="search formCenter form-control " placeholder="Search.." value={employee} onChange={this.changeInput} onKeyUp={this.search} />
+                                    <br />
+                                    
+                                    <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                        aria-labelledby="userDropdown">
+                                        {this.state.employeeResponse}
+                                    </div>
 
-            </div>
-        )
+                                    {/*  <div className={employeeColor} style={{width: '80%', marginLeft: '10%'}}>
+                                        <ul  className= " searchUl ">{this.state.employeeResponse}</ul>
+                                    </div> */}
+                                </div>
+                                <div className="col3">
+                                    <Link to="/statu" >
+                                        <img src={statuImg} alt="statu" />
+                                        <h4><i>STATU</i></h4>
+                                    </Link>
+                                    <input id="statu" type="text" className="search formCenter form-control " placeholder="Search.." value={statu} onChange={this.changeInput} onKeyUp={this.search} />
+                                    <br />
+                                    <div className={statuColor} style={{ width: '80%', marginLeft: '10%' }}>
+                                        <ul >{this.state.statuResponse}</ul>
+                                    </div>
+
+                                </div>
+                                <div className="col3">
+                                    <Link to="/criterion" >
+                                        <img src={criteriaImg} alt="criteria" />
+                                        <h4><i>CRITERIA</i></h4>
+                                    </Link>
+                                    <input id="criterion" type="text" className="search formCenter form-control " placeholder="Search.." value={criterion} onChange={this.changeInput} onKeyUp={this.search} />
+                                    <br />
+                                    <div className={criterionColor} style={{ width: '80%', marginLeft: '10%' }}>
+                                        <ul>{this.state.criterionResponse}</ul>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        );
+                    }
+                }
+
+            </StyleConsumer >
+        );
     }
 }
 

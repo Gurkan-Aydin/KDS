@@ -12,3 +12,5 @@ npm install body-parser --save
 
 npm install react-router-dom
 npm install axios
+npm install react-bootstrap-table --save
+npm install reactjs-popup --save
